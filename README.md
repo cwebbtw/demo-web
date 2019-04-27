@@ -1,16 +1,25 @@
-# Using knative to canary deploy two versions of the same application
+# Canary deploy with knative
+
+This demo-web repository provides the docker file, sample html and knative deployment manifests to canary deploy to a kubernetes cluster running knative.
 
 ## Prerequisites
 
 * Docker
-* Kubernetes context
-* knative installed on the kubernetes cluster
+* Kubernetes context (AKS/EKS/GKE/minikube are all supported)
+* knative (0.4) installed on the kubernetes cluster (knative works on minikube/AKS/EKS/etc)
+
+See https://knative.dev/docs/install/ for information on installing knative.
 
 ## Releases
 
 There is a blue release and a green release, which can be used to demonstrate deployment strategies.
 
-Both releases have been deployed to dockerhub.
+Both releases have been deployed to dockerhub and are public.
+
+See:
+
+* `cwebb/demo-web:blue`
+* `cwebb/demo-web:green`
 
 ## knative
 
