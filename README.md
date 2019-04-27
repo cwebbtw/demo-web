@@ -1,4 +1,4 @@
-# A web front end for demonstrating a simple web page using knative
+# Using knative to canary deploy two versions of the same application
 
 ## Prerequisites
 
