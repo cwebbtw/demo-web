@@ -1,0 +1,17 @@
+apiVersion: serving.knative.dev/v1alpha1
+kind: Service
+metadata:
+  name: demo-web
+spec:
+  release:
+    revisions: ["demo-web-blue","demo-web-green"]
+    rolloutPercent: 20
+    configuration:
+      revisionTemplate:
+        metadata:
+          name: demo-web-green
+        spec:
+          container:
+            ports:
+            - containerPort: 80
+            image: cwebb/demo-web:green

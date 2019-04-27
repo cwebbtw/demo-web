@@ -1,0 +1,15 @@
+apiVersion: serving.knative.dev/v1alpha1
+kind: Service
+metadata:
+  name: demo-web
+spec:
+  runLatest:
+    configuration:
+      revisionTemplate:
+        metadata:
+          name: demo-web-blue
+        spec:
+          container:
+            ports:
+            - containerPort: 80
+            image: cwebb/demo-web:blue 
