@@ -33,6 +33,36 @@ Deploying the blue release is done using `kubectl` to apply the deployment manif
 
 This manifest references the blue release which has been pushed to docker hub
 
+To access the deployment, use the following `kubectl` commands:
+
+##### Obtaining the load balancer IP
+
+`kubectl get service istio-ingressgateway -n istio-system`
+
+Extract the external IP from the returned line
+
+##### Obtaining the domain
+
+`kubectl get route`
+
+```
+cwebb@CMP ~/Development/personal/demo-web [master ≡]$ kubectl get route
+NAME       DOMAIN                                   READY   REASON
+demo-web   demo-web.default.example.com   True
+```
+
+##### Putting them together
+
+Hit the end point ensuring to pass the domain as the host header
+
+`curl -H 'Host: <domain>' <IP>`
+
+##### Further
+
+You can edit the config domain in the knative-serving namespace to use a domain and override the need to specify a host header.
+
+`kubectl edit cm config-domain -n knative-serving`
+
 ### Deploying green
 
 Deploying the green release is also done using `kubectl`. Apply the manifest in the same way using:
